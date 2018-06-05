@@ -1,6 +1,5 @@
 import org.junit.*;
 import org.junit.Assert.assertEquals
-import kotlin.math.roundToInt
 
 class PeopleRegisterTest {
 
