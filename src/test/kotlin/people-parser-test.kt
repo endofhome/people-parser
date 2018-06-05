@@ -35,7 +35,6 @@ Wally 28"""
         assertEquals(24, register.count());
     }
 
-    @Ignore
     @Test fun should_say_that_Dave_is_the_oldest() {
         assertEquals(Person("George", 85), register.oldestPerson()!!)
     }
@@ -78,7 +77,7 @@ class PeopleRegister(val people: List<Person>) {
 
     fun count(): Int = people.size
 
-    fun oldestPerson(): Person? = TODO()
+    fun oldestPerson(): Person? = people.sortedBy { it.age }.last()
 
     fun commonestName(): String? = TODO()
 
