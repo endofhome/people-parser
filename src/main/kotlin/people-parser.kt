@@ -10,12 +10,12 @@ class PeopleRegister(val people: List<Person>) {
 
     fun countOfChildren(): Int = people.filter { it.age < 18 }.size
 
-    fun adultToChildRatio(): Double = (people.size - countOfChildren()) / countOfChildren().toDouble()
+    fun adultToChildRatio(): Double = (count() - countOfChildren()) / countOfChildren().toDouble()
 
     fun averageAge(): Double = people.map { it.age }.reduce { acc, i -> acc + i } / count().toDouble()
 
     fun medianAge(): Double {
-        val toTrim = (people.size / 2) - 1
+        val toTrim = (count() / 2) - 1
         return people.sortedBy { it.age }.map { it.age }.drop(toTrim).dropLast(toTrim).reduce { acc, i -> acc + i } / 2.toDouble()
     }
 }
