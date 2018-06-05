@@ -1,5 +1,6 @@
 import org.junit.*;
 import org.junit.Assert.assertEquals
+import kotlin.math.roundToInt
 
 class PeopleRegisterTest {
 
@@ -59,7 +60,6 @@ Wally 28"""
         assertEquals(33.0, register.averageAge(), 0.001)
     }
 
-    @Ignore
     @Test fun should_calculate_the_median_age() {
         assertEquals(27.5, register.medianAge(), 0.001)
     }
@@ -85,7 +85,8 @@ class PeopleRegister(val people: List<Person>) {
     fun averageAge(): Double = people.map { it.age }.reduce { acc, i -> acc + i } / count().toDouble()
 
     fun medianAge(): Double {
-        TODO()
+        val toTrim = (people.size / 2) - 1
+        return people.sortedBy { it.age }.map { it.age }.drop(toTrim).dropLast(toTrim).reduce { acc, i -> acc + i } / 2.toDouble()
     }
 
 }
