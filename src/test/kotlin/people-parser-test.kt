@@ -55,7 +55,6 @@ Wally 28"""
         assertEquals(2.0, register.adultToChildRatio(), 0.001)
     }
 
-    @Ignore
     @Test fun should_calculate_the_average_age() {
         assertEquals(33.0, register.averageAge(), 0.001)
     }
@@ -83,7 +82,7 @@ class PeopleRegister(val people: List<Person>) {
 
     fun adultToChildRatio(): Double = (people.size - countOfChildren()) / countOfChildren().toDouble()
 
-    fun averageAge(): Double = TODO()
+    fun averageAge(): Double = people.map { it.age }.reduce { acc, i -> acc + i } / count().toDouble()
 
     fun medianAge(): Double {
         TODO()
