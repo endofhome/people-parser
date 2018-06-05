@@ -39,7 +39,6 @@ Wally 28"""
         assertEquals(Person("George", 85), register.oldestPerson()!!)
     }
 
-    @Ignore
     @Test fun should_say_that_Tom_is_the_commonest_name() {
         assertEquals("Tom", register.commonestName())
     }
@@ -79,7 +78,7 @@ class PeopleRegister(val people: List<Person>) {
 
     fun oldestPerson(): Person? = people.sortedBy { it.age }.last()
 
-    fun commonestName(): String? = TODO()
+    fun commonestName(): String? = people.groupBy { it.name }.map { it.key to it.value.size }.sortedBy { it.second }.last().first
 
     fun youngestCalled(sought: String): Int? = TODO()
 
