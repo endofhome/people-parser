@@ -47,7 +47,6 @@ Wally 28"""
         assertEquals(27, register.youngestCalled("Peter"))
     }
 
-    @Ignore
     @Test fun should_report_eight_children() {
         assertEquals(8, register.countOfChildren())
     }
@@ -81,7 +80,7 @@ class PeopleRegister(val people: List<Person>) {
 
     fun youngestCalled(sought: String): Int? = people.filter { it.name == sought }.sortedBy { it.age }.first().age
 
-    fun countOfChildren(): Int = TODO()
+    fun countOfChildren(): Int = people.filter { it.age < 18 }.size
 
     fun adultToChildRatio(): Double {
         TODO()
