@@ -51,7 +51,6 @@ Wally 28"""
         assertEquals(8, register.countOfChildren())
     }
 
-    @Ignore
     @Test fun should_report_an_adult_to_child_ratio_of_2() {
         assertEquals(2.0, register.adultToChildRatio(), 0.001)
     }
@@ -82,9 +81,8 @@ class PeopleRegister(val people: List<Person>) {
 
     fun countOfChildren(): Int = people.filter { it.age < 18 }.size
 
-    fun adultToChildRatio(): Double {
-        TODO()
-    }
+    fun adultToChildRatio(): Double = (people.size - countOfChildren()) / countOfChildren().toDouble()
+
     fun averageAge(): Double = TODO()
 
     fun medianAge(): Double {
